@@ -9,6 +9,8 @@ version:
   number: auto
   name: '0.0.1'
 
+min_sdk: 24
+
 authors:
   - Joseph Lee
 
