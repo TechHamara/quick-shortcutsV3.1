@@ -3,7 +3,7 @@
 
 ---
 name: QuickShortcuts
-description: Extension component for QuickShortcuts. Created using Rush.
+description: Creates home screen shortcuts and app shortcuts.
 
 version:
   number: auto
