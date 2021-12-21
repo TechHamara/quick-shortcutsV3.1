@@ -102,5 +102,5 @@ This is a test release and the blocks included might change before release. If y
 >
 >- Returns - Boolean
 
-### Download & Source Code
-https://github.com/josephlee222/quick-shortcuts/
+### Kodular Community (Support)
+https://community.kodular.io/t/opensource-testing-quickshortcuts-make-dynamic-and-pinned-shortcuts/159528
