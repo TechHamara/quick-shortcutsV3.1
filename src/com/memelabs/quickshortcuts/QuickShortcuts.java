@@ -15,6 +15,7 @@ import com.google.appinventor.components.runtime.errors.YailRuntimeError;
 import com.google.appinventor.components.runtime.util.YailList;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class QuickShortcuts extends AndroidNonvisibleComponent {
 
@@ -30,7 +31,7 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
   }
 
   @SimpleFunction(description = "Creates a shortcut with the given name, icon, starting screen and value.")
-  public void CreateShortcut(String id ,String name, String description, String icon, String screen, String startValue) {
+  public void CreateShortcut(String id ,String shortName, String longName, String icon, String screen, String startValue) {
     ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
     AssetManager assetManager = context.getAssets();
     String packageName = context.getClass().getPackage().getName();
@@ -44,8 +45,8 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
 
     try {
       shortcut = new ShortcutInfo.Builder(context, id)
-        .setShortLabel(name)
-        .setLongLabel(description)
+        .setShortLabel(shortName)
+        .setLongLabel(longName)
         .setIcon(Icon.createWithBitmap(BitmapFactory.decodeStream(assetManager.open(icon))))
         .setIntent(shortcutIntent)
         .build();
@@ -57,7 +58,7 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
   }
 
   @SimpleFunction(description = "Creates and requests to pin a shortcut with the given name, icon, starting screen and value.")
-  public void CreatePinnedShortcut(String id ,String name, String description, String icon, String screen, String startValue) {
+  public void CreatePinnedShortcut(String id ,String shortName, String longName, String icon, String screen, String startValue) {
     ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
     AssetManager assetManager = context.getAssets();
     String packageName = context.getClass().getPackage().getName();
@@ -71,8 +72,8 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
 
     try {
       shortcut = new ShortcutInfo.Builder(context, id)
-        .setShortLabel(name)
-        .setLongLabel(description)
+        .setShortLabel(shortName)
+        .setLongLabel(longName)
         .setIcon(Icon.createWithBitmap(BitmapFactory.decodeStream(assetManager.open(icon))))
         .setIntent(shortcutIntent)
         .build();
@@ -95,10 +96,40 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
     shortcutManager.disableShortcuts(Arrays.asList(id));
   }
 
-  @SimpleFunction(description = "Removes all shortcuts.")
+  @SimpleFunction(description = "Enable a shortcut with the given id.")
+  public void EnableShortcut(String id) {
+    ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
+    shortcutManager.enableShortcuts(Arrays.asList(id));
+  }
+
+  @SimpleFunction(description = "Removes all dynamic shortcuts.")
   public void RemoveAllShortcuts() {
     ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
     shortcutManager.removeAllDynamicShortcuts();
+  }
+
+  @SimpleFunction(description = "Checks whether a dynamic shortcut exists by id.")
+  public boolean IsDynamicShortcutExist(String id) {
+    ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
+    List<ShortcutInfo> shortcutsList = shortcutManager.getShortcuts(2);
+    for (int i = 0; i < shortcutsList.size(); i++) {
+      if (shortcutsList.get(i).getId().equals(id)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @SimpleFunction(description = "Checks whether a pinned shortcut exists by id. (SDK => 25 or higher)")
+  public boolean IsPinnedShortcutExist(String id) {
+    ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
+    List<ShortcutInfo> shortcutsList = shortcutManager.getShortcuts(4);
+    for (int i = 0; i < shortcutsList.size(); i++) {
+      if (shortcutsList.get(i).getId().equals(id)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   @SimpleFunction(description = "Checks if shortcuts are rate-limited.") 
@@ -112,6 +143,4 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
     ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
     return shortcutManager.isRequestPinShortcutSupported();
   }
-  
-  
 }
