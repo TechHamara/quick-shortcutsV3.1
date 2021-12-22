@@ -1,5 +1,5 @@
 # QuickShortcuts
-**Requires Android SDK 24 (Norgat 7.0) and above, best on SDK 25 (Norgat 7.1) and above**
+**Backwards compatitble with versions < Android 7.1 (SDK 25). Features will only work when the user's device is Android => 7.1 (SDK 25)**
 
 This is a extension that lets you add dynamic shortcuts as well as request user to pin shortcuts to the home screen.
 
