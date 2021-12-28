@@ -12,9 +12,9 @@ This is a test release and the blocks included might change before release. If y
 
 ### Block Documentation
 
-> ![CreateShortcut|489x184, 75%](upload://e7Bf3aGffd9j7N9TQ96lezO6F2W.png)
+> ![CreateDynamicShortcut|464x184, 75%](upload://cgzxp4RYTfyVHoX3ejt9fz51kR.png)
 >
->`CreateShortcut`
+>`CreateDynamicShortcut`
 >
 >Creates a dynamic shortcut on the app. Users can then access it by holding down your app icon
 >
@@ -62,9 +62,9 @@ This is a test release and the blocks included might change before release. If y
 >
 >- id - String
 
-> ![RemoveAllShortcuts|327x29, 75%](upload://3Fj0DlSnybsiz24jIm2XvAdyGfL.png)
+> ![RemoveAllDynamicShortcuts|384x29, 75%](upload://tReOgWtPJ6w3DJO7yYhVUVXmmW2.png)
 >
->`RemoveAllShortcuts`
+>`RemoveAllDynamicShortcuts`
 >
 >Removes all dynamic shortcuts. Does not apply to pinned shortcuts or dynamic shortcuts that has been pinned to the home screen
 
@@ -94,9 +94,17 @@ This is a test release and the blocks included might change before release. If y
 >
 >- Returns - Boolean
 
-> ![SupportsPinnedShortcuts|369x25, 75%](upload://z1b2KBbr3CPMb0ERKSVnXaXyq11.png)
+> ![IsShortcutsSupported|343x25, 75%](upload://uY8NYLpSLe6Ky6c5p2sEu55jsTg.png)
 >
->`SupportsPinnedShortcuts`
+>`IsShortcutsSupported`
+>
+>Checks whether the the device is supported by the extension (Use this to disable any button if shortcuts is not supported on the user's device.)
+>
+>- Returns - Boolean
+
+> ![IsPinnedShortcutsSupported|389x25, 75%](upload://wsdEKjzeVnUDpn2AhPIVjPPzK4X.png)
+>
+>`IsPinnedShortcutsSupported`
 >
 >Checks whether the user's device launcher supports pinning shortcuts (Recommend use before `CreatePinnedShortcut`)
 >
