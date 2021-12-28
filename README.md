@@ -1,5 +1,5 @@
 # QuickShortcuts
-**Backwards compatitble with versions < Android 7.1 (SDK 25). Features will only work when the user's device is Android => 7.1 (SDK 25)**
+**Backwards compatitble with versions < Android 8 (SDK 26). Features will only work when the user's device is Android => 8 (SDK 26)**
 
 This is a extension that lets you add dynamic shortcuts as well as request user to pin shortcuts to the home screen.
 

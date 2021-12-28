@@ -26,7 +26,7 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
   public Icon icon;
 
   // Compatibility with API 25+ (Android 7.0), safeguard implemented so that it doesn't crash on older versions of Android
-  public Boolean compatibility = android.os.Build.VERSION.SDK_INT >= 25;
+  public Boolean compatibility = android.os.Build.VERSION.SDK_INT >= 26;
 
   public QuickShortcuts(ComponentContainer container) {
     super(container.$form());
