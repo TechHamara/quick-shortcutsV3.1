@@ -59,7 +59,8 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
         throw new YailRuntimeError(e.toString(), "IOException");
       }
 
-      shortcutManager.pushDynamicShortcut(shortcut);
+      // 0.2.2: Fixed crash when adding shortcut below android 12
+      shortcutManager.setDynamicShortcuts(Arrays.asList(shortcut));
     }
   }
 
@@ -128,7 +129,7 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
   public boolean IsDynamicShortcutExist(String id) {
     if (compatibility) {
       ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-      List<ShortcutInfo> shortcutsList = shortcutManager.getShortcuts(2);
+      List<ShortcutInfo> shortcutsList = shortcutManager.getDynamicShortcuts();
       for (int i = 0; i < shortcutsList.size(); i++) {
         if (shortcutsList.get(i).getId().equals(id)) {
           return true;
@@ -144,7 +145,7 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
   public boolean IsPinnedShortcutExist(String id) {
     if (compatibility) {
       ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-      List<ShortcutInfo> shortcutsList = shortcutManager.getShortcuts(4);
+      List<ShortcutInfo> shortcutsList = shortcutManager.getPinnedShortcuts();
       for (int i = 0; i < shortcutsList.size(); i++) {
         if (shortcutsList.get(i).getId().equals(id)) {
           return true;
