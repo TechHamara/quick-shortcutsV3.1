@@ -64,7 +64,7 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
           shortcut = new ShortcutInfo.Builder(context, id)
             .setShortLabel(shortname)
             .setLongLabel(longname)
-            .setIcon(Icon.createWithBitmap(BitmapFactory.decodeStream(assetManager.open(icon))))
+            .setIcon(icon == "" ? Icon.createWithResource(context, context.getApplicationInfo().icon) : Icon.createWithBitmap(BitmapFactory.decodeStream(assetManager.open(icon))))
             .setIntent(shortcutIntent)
             .build();
 
@@ -103,7 +103,7 @@ public class QuickShortcuts extends AndroidNonvisibleComponent {
         shortcut = new ShortcutInfo.Builder(context, id)
           .setShortLabel(shortName)
           .setLongLabel(longName)
-          .setIcon(Icon.createWithBitmap(BitmapFactory.decodeStream(assetManager.open(icon))))
+          .setIcon(icon == "" ? Icon.createWithResource(context, context.getApplicationInfo().icon) : Icon.createWithBitmap(BitmapFactory.decodeStream(assetManager.open(icon))))
           .setIntent(shortcutIntent)
           .build();
       } catch (Exception e) {
